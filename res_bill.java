@@ -1,6 +1,6 @@
 import java.util.Scanner; // import the Scanner class 
 
-class bill {
+class res_bill {
   public static void main(String[] args) {
 
     /*
