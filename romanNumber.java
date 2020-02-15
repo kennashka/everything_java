@@ -8,7 +8,7 @@ Write a program that prompts the user to enter a number within the range of 1 th
 
     import java.util.Scanner;
 
-class Main {
+class romanNumber {
   public static void main(String[] args) {
 
 Scanner sc = new Scanner(System.in);
