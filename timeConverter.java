@@ -9,7 +9,7 @@ Write a program that asks the user to enter a number of seconds.
 
 import java.util.Scanner;
 
-class Main {
+class timeConverter{
   public static void main(String[] args) {
 
 Scanner sc = new Scanner(System.in); // create new scanner class
