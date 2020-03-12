@@ -15,26 +15,25 @@ import java.io.IOException;
 import java.util.*;
 import java.io.FileReader;
 import java.io.BufferedReader;
+import java.io.*;
 
 
 
 
-public class FileCount {
+
+public class Midterm {
             public static void main(String[] args) 
  throws IOException  {
-//        	Random objGenerator = new Random();
-//            for (int count = 0; count< 100; count++){
-//              int randomNumber = objGenerator.nextInt(200);
-//              System.out.println("Random No : " + randomNumber); 
-//             }
 
 
-
-        // The target file
-        File out = new File("/Users/kenya/Downloads/number.txt");
-        FileWriter fw = null;
-        int n = 512;
-        String[] words=null;   
+        // The target file name and location
+        File out = new File("C:\\Users\\kennashka.desilva001\\Desktop\\number.txt");
+        FileWriter fw = null;  // set to null
+        
+        int n = 512; // initialize n
+        
+        String[] words=null;  // set the word to null
+        
               int wc=0;     //Intialize word count to zero
 
         // Try block: Most stream operations may throw IO exception
@@ -48,30 +47,46 @@ public class FileCount {
             while (n > 0) {
                 // Randomize an integer and write it to the output file
                 line = random.nextInt(100);
-                writer.write(line + "\n");
+                
+                writer.write("\n" + line );
+                writer.newLine(); //
+          
                 n--;
             }
             System.out.print("test: " + line);
             // Close the stream
             writer.close();
         } catch (IOException e) {
-            e.printStackTrace();
             System.exit(0);
             
         }
    // count file
+   
+   // code to append
+   
+   
+ 
+    
+    
+    //code to append
 int x; 
 
  Scanner inputStream = null; 
 
-     inputStream = new Scanner( new File("/Users/kenya/Downloads/number.txt") ); 
+     inputStream = new Scanner( new File("C:\\Users\\kennashka.desilva001\\Desktop\\number.txt") ); 
  
-   while( inputStream.hasNextInt() ){ 
+      FileWriter  outputFile = new FileWriter ("C:\\Users\\kennashka.desilva001\\Desktop\\number.txt", true);      
+         PrintWriter printWriter = new PrintWriter(outputFile);
+         printWriter.println("------------------------------------------------- Numbers greater than 8 ----------------------------------------------------------------");  //New line
+         
+  while( inputStream.hasNextInt() ){ 
  x = inputStream.nextInt(); 
   if(x > 8){
-    System.out.println(x); 
+    printWriter.println(x); 
+
    }
  } 
+   printWriter.close();  
     inputStream.close(); 
 
     // Create a program to generate 100 random integer numbers and save it in a file named number.txt.
@@ -95,6 +110,9 @@ int x;
 //      fr.close();
 //      System.out.println("Number of words in the file:" +wc);    //Print the word count
 //        
+
+// count 
+
+
     }
 }
-
