@@ -42,14 +42,14 @@ slot machine and the total amount won. Decision Structures
 
 */
 
+import java.util.Random;
 import java.util.Scanner;  // Import the Scanner class
 
 public class Ch4_22SlotMachineSimulation {
-    
-    int Cherries, Oranges, Plums, Bells, Melons, Bars;
-    
+        
      public static void main(String[] args) {
-
+         
+ //loop should repeat 3X 
    Scanner num = new Scanner(System.in);  // Create a Scanner object
 
    System.out.print("\t \t \t ********** Slot Machine **********");
@@ -57,16 +57,82 @@ public class Ch4_22SlotMachineSimulation {
     System.out.println("\n \n \t \t \t Insert Cash: ");
     
     int money = num.nextInt();  // Read user input
-    System.out.println("\n \t \t \t Balance: $" + money);  // Output user input
-    
-    
-    
+    System.out.println("\n \t \t \t Balance: $" + money + "\n");  // Output user input
  
-num.close();
+    int Cherries = 0, Oranges = 0, Plums = 0, Bells =0, Melons =0, Bars=0;
+
+for (int x = 1; x<=3; x++){
+
+
+    Random randnum = new Random();  // create a variable to hold a random number
+
+    
+int choices = randnum.nextInt(5) + 1; // generate a random number in the range of 0 through 5.
+         
+
+// System.out.println(choices);
+
+switch (choices) {
+  case 0:
+    System.out.print("\t Cherries");
+    break;
+  case 1:
+    System.out.print("\t Oranges");
+    break;
+  case 2:
+    System.out.print("\t Plums");
+    break;
+  case 3:
+    System.out.print("\t Bells");
+    break;
+  case 4:
+    System.out.print("\t Melons");
+    break;
+  case 5:
+    System.out.print("\t Bars");
+    break;
+}
+
+
+      if(choices == 0){
+     Cherries++;
+     System.out.print(" \t " + Cherries);
+
+    }
+            if(choices == 1){
+      Oranges++;
+       System.out.print("\t " + Oranges);
+    }
+            if(choices == 2){
+     
+      Plums++;
+            System.out.print(" \t " + Plums);
+
+      
+    }
+            
+        if(choices == 3){
+      Bells++;
+       System.out.print(" \t " + Bells);
+    }
+        if(choices == 4){
+      Melons++;
+             System.out.print(" \t " + Melons);
+
+    }
+         if(choices == 5){
+      Bars++;
+                   System.out.print(" \t " + Bars);
+
+    }
+     
+// num.close();
+}
+
 
      }
+ }
     
     
     
-    
-}
+
