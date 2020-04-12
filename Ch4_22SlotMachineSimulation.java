@@ -48,7 +48,8 @@ import java.util.Scanner;  // Import the Scanner class
 public class Ch4_22SlotMachineSimulation {
         
      public static void main(String[] args) {
-         
+                 Scanner input = new Scanner(System.in);
+
  //loop should repeat 3X 
    Scanner num = new Scanner(System.in);  // Create a Scanner object
 
@@ -60,6 +61,10 @@ public class Ch4_22SlotMachineSimulation {
     System.out.println("\n \t \t \t Balance: $" + money + "\n");  // Output user input
  
     int Cherries = 0, Oranges = 0, Plums = 0, Bells =0, Melons =0, Bars=0;
+    int newBalance = money;
+    
+    
+  do {
 
 for (int x = 1; x<=3; x++){
 
@@ -67,72 +72,180 @@ for (int x = 1; x<=3; x++){
     Random randnum = new Random();  // create a variable to hold a random number
 
     
-int choices = randnum.nextInt(5) + 1; // generate a random number in the range of 0 through 5.
+int choices = randnum.nextInt(5); // generate a random number in the range of 0 through 5.
          
 
 // System.out.println(choices);
 
 switch (choices) {
   case 0:
-    System.out.print("\t Cherries");
+    System.out.print("\n Cherries");
     break;
   case 1:
-    System.out.print("\t Oranges");
+    System.out.print("\n Oranges");
     break;
   case 2:
-    System.out.print("\t Plums");
+    System.out.print("\n Plums");
     break;
   case 3:
-    System.out.print("\t Bells");
+    System.out.print("\n Bells");
     break;
   case 4:
-    System.out.print("\t Melons");
+    System.out.print("\n Melons");
     break;
   case 5:
-    System.out.print("\t Bars");
+    System.out.print("\n Bars");
     break;
 }
 
 
       if(choices == 0){
      Cherries++;
-     System.out.print(" \t " + Cherries);
+     if (Cherries == 1){
+            System.out.print("\t " + Cherries); 
+            
+            System.out.print("\t You won $0." );
+
+     }
+      if (Cherries ==2 ){
+         System.out.print("\t " + Cherries); 
+         newBalance = (2 * newBalance);
+         System.out.print("\t You won 2X.");
+         
+
+     }
+     if (Cherries ==3){
+         System.out.print("\t " + Cherries); 
+         newBalance = (3 * newBalance);
+            System.out.print("\t You won 3X.");
+     }
 
     }
             if(choices == 1){
       Oranges++;
-       System.out.print("\t " + Oranges);
-    }
-            if(choices == 2){
-     
-      Plums++;
-            System.out.print(" \t " + Plums);
+            if (Oranges == 1){
+            System.out.print("\t " + Oranges); 
+            System.out.print("\t You won $0. ");
 
-      
+     }
+      if (Oranges ==2){
+         System.out.print("\t " + Oranges); 
+         newBalance = (2 * newBalance);
+         System.out.print("\t You won 2X.");
+
+     }
+     if (Oranges ==3){
+         System.out.print("\t " + Oranges); 
+         newBalance = (3 * money);
+            System.out.print("\t You won 3X.");
+     }
+    
+    }
+   
+            if(choices == 2){
+      Plums++;
+            if (Plums == 1){
+            System.out.print(" \t " + Plums); 
+            System.out.print("\t You won $0 ");
+
+     }
+      if (Plums ==2){
+         System.out.print(" \t " + Plums);
+         newBalance = (2 * newBalance);
+         System.out.print("\t You won 2X.");
+     }
+     if (Plums ==3){
+         System.out.print(" \t " + Plums); 
+         newBalance = (3 * money);
+            System.out.print("\t You won 3X. Balance = $" + (newBalance));
+     }
+     
     }
             
         if(choices == 3){
       Bells++;
-       System.out.print(" \t " + Bells);
+                if (Bells == 1){
+            System.out.print("\t " + Bells); 
+            System.out.print("\t You won $0. ");
+
+     }
+      if (Bells ==2){
+         System.out.print(" \t " + Bells); 
+      newBalance = (2 * newBalance);
+            System.out.print("\t You won 2X.");
+
+     }
+     if (Bells ==3){
+         System.out.print(" \t " + Bells); 
+        newBalance = (3 * money);
+            System.out.print(" You won 3X." );
+     }
     }
         if(choices == 4){
       Melons++;
-             System.out.print(" \t " + Melons);
+                if (Melons == 1){
+            System.out.print(" \t " + Melons); 
+            System.out.print("\t You won $0. ");
 
+     }
+      if (Melons ==2){
+         System.out.print(" \t " + Melons); 
+ newBalance = (2 * newBalance);
+            System.out.print("\t You won 2X.");
+
+     }
+     if (Melons ==3){
+         System.out.print(" \t " + Melons); 
+        newBalance = (3 * money);
+            System.out.print("\t You won 3X.");
+     }
+  
     }
          if(choices == 5){
       Bars++;
-                   System.out.print(" \t " + Bars);
-
-    }
-     
-// num.close();
-}
-
+           if (Bars == 1){
+            System.out.print(" \t " + Bars); 
+            System.out.print(" \n You won $0. ");
 
      }
- }
-    
-    
-    
+      if (Bars ==2){
+         System.out.print(" \t " + Bars); 
+ newBalance = (2 * newBalance);
+            System.out.print(" You won 2X.");
 
+     }
+     if (Bars ==3){
+         System.out.print(" \t " + Bars); 
+          newBalance = (3 * newBalance);
+                   newBalance = (3 * money);
+            System.out.print(" You won 3X.");
+     }
+    }
+ System.out.print("\t Your Balance: $" + newBalance);
+
+// num.close();
+}  // end of for loop
+
+  
+// do - while loop
+  Cherries = 0;
+  Oranges = 0;
+  Plums = 0;
+  Bells =0;
+  Melons =0;
+  Bars=0;
+
+ System.out.println("\n\nType YES to continue:");
+
+  }while (input.next().equalsIgnoreCase("YES"));
+        input.close();
+
+        System.out.println("Original Balance: $" + money + ". You won: $" + (newBalance - money));
+
+     }
+  
+     
+ }
+
+    
+    
