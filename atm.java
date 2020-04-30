@@ -1,8 +1,15 @@
+/*****
+****** Author: Kennashka DeSilva
+****** Email: mail@kennashka.com
+****** Date: April, 30, 2020
+*/
+
 import java.text.NumberFormat; // Helps with formatting doubles as currency
 import java.util.Scanner; // Will be used to get input from the user
 
 
-  /* Using Object-Oriented Programing (OOP), this means you must use a class and methods (getters and setters) to complete this assignment.
+
+/* Using Object-Oriented Programing (OOP), this means you must use a class and methods (getters and setters) to complete this assignment.
 
 You will be creating an ATM program.
 
@@ -26,7 +33,7 @@ The ATM can only give 20 (make sure the ATM corrects this if user enters differe
 If you have any questions please email me.
 */
 
-public class atm {
+public class Main {
 	
 	public static void main(String[] args) {
 
@@ -35,54 +42,69 @@ public class atm {
 		// Create and instantiate two Account objects
 
 		Account checking = new Account();
-    checking.setPin(0);
-    checking.setAccountNum(0);
-		checking.setType("Checking");
-		checking.setBalance(0.00);
-		checking.setRate(0.00);
+    checking.setPin(0);  // ability to set a pin number
+    checking.setAccountNum(0); // ability to set account number
+		checking.setType("Checking"); // ability to set an account type
+		checking.setBalance(0.00); // ability to set balance
+		checking.setRate(0.00); // ability to set interest rate
 
 		Account savings = new Account();
-    savings.setPin(0);
-    savings.setAccountNum(0);
-    savings.setType("Savings");
-		savings.setBalance(0.00);
-		savings.setRate(2.00);
+    savings.setPin(0); // ability to set a pin number
+    savings.setAccountNum(0); // ability to set account number
+    savings.setType("Savings"); // ability to set an account type
+		savings.setBalance(0.00); // ability to set balance
+		savings.setRate(2.00); // ability to set interest rate
 
 		NumberFormat formatter = NumberFormat.getCurrencyInstance(); // Creates the formatter object for currency
+
 		Scanner sc = new Scanner(System.in); // Creates the sc object to read user input
 
 		boolean session = true; // This variable will break the (while) loop when false
      
 // Variables
-double check = 0;
-double cash = 0;
-double deposit = 0;
-double withdrawalLimit = 300;
-double withdrawalTally = 0;
-double twenty = 20;
-int pinCounter=3;
+double check = 0; // handles input for check
+double cash = 0;  // handles input for cash
+double deposit = 0;  // handles input for deposit
+double withdrawalLimit = 300;  // handles Withdrawal Limit for cash
+double withdrawalTally = 0;  // handles withdrawal Tally for cash withdrawal
+double twenty = 20; // handles the money to be dispensed
 
+int pinCounter=3; // handles Requirement for 3 failed pin attempts
 
-
+		System.out.println("\nWelcome to the Bank of Kennashka.\n");
+// Prompts User to set an account number
 			System.out.println("\nPlease set your Account Number:\n");
+      // Stores user input for accountNum
       int accountNum =sc.nextInt();
+      // We now set an accountNum for checking and savings
       checking.setAccountNum(accountNum);
       savings.setAccountNum(accountNum);
 
+// Prompts User to set a pin number
+
 			System.out.println("\nPlease set your pin:\n");
+            // Stores user input for pin entry
+
       int entry =sc.nextInt();
+            // We now set a pin entry for checking and savings
+
       checking.setPin(entry);
       savings.setPin(entry);
       
       System.out.println("\nYour Pin Has Been Set! \n");
+
+      // Prompt for user sign in with pin
       System.out.println("\nEnter your pin to login account " + accountNum + ":");
       int pin =sc.nextInt();
 
+// while loop to handle 3 pin entry tries.
 while ( pin != entry )
 		{
       
 			System.out.println("\nPin does not match entry. TRY AGAIN.");
-      pinCounter--;
+      pinCounter--; // we decrement when pin is incorrect
+
+      // if pincounter is 0 then system is disabled
       if (pinCounter ==0){
         System.out.println("\nYou Have Exceeded Maximum Attempts.");
         System.out.println("Call Customer Service For Further Assistance.");
@@ -95,6 +117,7 @@ while ( pin != entry )
 		System.out.println("\nPIN ACCEPTED. YOU NOW HAVE ACCESS TO YOUR ACCOUNT.");
   
 
+// main transaction session loop
 		while (session) {
 
 
@@ -141,15 +164,19 @@ while ( pin != entry )
             // Handles Option for Cash or Check
             int cashOrCheck =sc.nextInt();
 
+// if option is equal to 1 then user selected cash deposit
             if (cashOrCheck ==1){
                 System.out.println("\nYou can only deposit cash up to $100. Please insert Your Cash: \n");
 
                 System.out.println("How much money would you like to deposit?");
 						 cash = sc.nextDouble();
+
+             // handle cash value greater than 100
              if (cash>100){
                System.out.println("\n Cash Deposit exceeds $100.00. No action Taken. Return to main menu.");
 
             }
+            // handles cash deposits less than 100
             if(cash <=100){
               
                 savings.deposit(cash);
@@ -158,17 +185,19 @@ while ( pin != entry )
             }
            
             }
+            // handles deposit option 2 for checks
             else if (cashOrCheck ==2){
                System.out.println("\nYou can only deposit checks up to $9,999.99. Please insert check:\n");
 
             System.out.println("How much money would you like to deposit?");
 						 check = sc.nextDouble();
 
-
+// handles if checks are greater than $9,999.99
             if (check>9999.99){
                System.out.println("\n Cash Deposit exceeds $9999.99. No action Taken. Return to main menu.");
 
             }
+            // handles if checks are less than $9,999.99
             if (check <=9999.99){
                 check += deposit;
                 savings.deposit(deposit);
@@ -181,7 +210,7 @@ while ( pin != entry )
 					}
           
           }
-
+// handles options to deposit in checking which is option 2
 					else if (depAccount == 2) {
 						
 						System.out.println("\nYour current Checking balance is: " + formatter.format(checking.getBalance()) + "\n");
@@ -208,17 +237,22 @@ while ( pin != entry )
             }
 
                    }
+                    // handles deposit option 2 for checks
+
             else if (cashOrCheck ==2){
                System.out.println("\nYou can only deposit checks up to $9,999.99. Please insert check:\n");
 
             System.out.println("How much money would you like to deposit?");
 						 check = sc.nextDouble();
+// handles if checks are greater than $9,999.99
 
 
             if (check>9999.99){
                System.out.println("\n Cash Deposit exceeds $9999.99. No action Taken. Return to main menu.");
 
             }
+                        // handles if checks are less than $9,999.99
+
             if (check <=9999.99){
                 checking.deposit(check);
 	System.out.println("\nYour Savings balance is now: " + formatter.format(checking.getBalance()) + "\n");
@@ -291,7 +325,7 @@ while ( pin != entry )
 
 						System.out.println("How much money would you like to withdraw?");
 						double withdraw = sc.nextDouble();
-
+// handles multiple scenarios for not going over the withdrawal limit
  if (withdraw > withdrawalLimit){
                System.out.println("\nWithdrawal is over the daily limit.");
              }
