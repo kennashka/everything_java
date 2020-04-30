@@ -17,7 +17,11 @@ Rules that must be coded:
 A max of $300 daily limit for withdraw
 
 You can only deposit cash up to $100 and checks up to $9,999.99
+
+
 After 3 failed account/pin try the system should stop (disable)
+
+
 The ATM can only give 20 (make sure the ATM corrects this if user enters different)
 If you have any questions please email me.
 */
@@ -51,6 +55,7 @@ double cash = 0;
 double deposit = 0;
 double withdrawalLimit = 300;
 double withdrawalTally = 0;
+double twenty = 20;
 
 		while (session) {
 
@@ -209,10 +214,23 @@ double withdrawalTally = 0;
                   System.out.println("\nWithdrawal is over the daily limit."); 
                
              }
-             // 300 = 300
-            if(withdraw == withdrawalLimit &&  withdrawalTally < withdrawalLimit) {
-              withdrawalTally += withdraw;
-              savings.withdraw(withdraw);
+
+            //  if (withdraw % twenty != 0){
+            //   System.out.println( withdraw % twenty != 0);
+            //  }
+             
+// Requirement: The ATM can only give 20 (make sure the ATM corrects this if user enters different)
+            if(withdraw <= withdrawalLimit &&  withdrawalTally < withdrawalLimit) {
+              if ( withdraw % twenty != 0){
+                
+             System.out.println("\nATM Can only dispense $20.00 bills. Please start your transaction over.");
+
+              }
+              else {
+                
+                withdrawalTally += withdraw;
+                savings.withdraw(withdraw);
+              }
              }
             
 
@@ -243,9 +261,17 @@ double withdrawalTally = 0;
                
              }
              // 300 = 300
-            if(withdraw == withdrawalLimit &&  withdrawalTally < withdrawalLimit) {
-              withdrawalTally += withdraw;
-              checking.withdraw(withdraw);
+            if(withdraw <= withdrawalLimit &&  withdrawalTally < withdrawalLimit) {
+              if ( withdraw % twenty != 0){
+                
+             System.out.println("\nATM Can only dispense $20.00 bills. Please start your transaction over.");
+
+              }
+              else {
+                
+                withdrawalTally += withdraw;
+                checking.withdraw(withdraw);
+              }
              }
 
 
@@ -315,7 +341,7 @@ double withdrawalTally = 0;
 			}				 	
 			
 
-		}
+		} // end of wile loop
 
 		System.out.println("\nThank you for banking with us!\n");
 
