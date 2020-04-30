@@ -35,12 +35,16 @@ public class atm {
 		// Create and instantiate two Account objects
 
 		Account checking = new Account();
+    checking.setPin(0);
+    checking.setAccountNum(0);
 		checking.setType("Checking");
 		checking.setBalance(0.00);
 		checking.setRate(0.00);
 
 		Account savings = new Account();
-		savings.setType("Savings");
+    savings.setPin(0);
+    savings.setAccountNum(0);
+    savings.setType("Savings");
 		savings.setBalance(0.00);
 		savings.setRate(2.00);
 
@@ -56,8 +60,49 @@ double deposit = 0;
 double withdrawalLimit = 300;
 double withdrawalTally = 0;
 double twenty = 20;
+int pinCounter=3;
+
+
+
+			System.out.println("\nPlease set your Account Number:\n");
+      int accountNum =sc.nextInt();
+      checking.setAccountNum(accountNum);
+      savings.setAccountNum(accountNum);
+
+			System.out.println("\nPlease set your pin:\n");
+      int entry =sc.nextInt();
+      checking.setPin(entry);
+      savings.setPin(entry);
+      
+      System.out.println("\nYour Pin Has Been Set! \n");
+      System.out.println("\nEnter your pin to login account " + accountNum + ":");
+      int pin =sc.nextInt();
+
+while ( pin != entry )
+		{
+      
+			System.out.println("\nPin does not match entry. TRY AGAIN.");
+      pinCounter--;
+      if (pinCounter ==0){
+        System.out.println("\nYou Have Exceeded Maximum Attempts.");
+        System.out.println("Call Customer Service For Further Assistance.");
+        System.exit(0);
+      }
+      	System.out.print("ENTER YOUR PIN: " );
+      	pin = sc.nextInt();
+		}
+
+		System.out.println("\nPIN ACCEPTED. YOU NOW HAVE ACCESS TO YOUR ACCOUNT.");
+  
 
 		while (session) {
+
+
+
+		
+    System.out.println("\nHELLO MR. COTO. WHAT WOULD YOU LIKE TO DO TODAY?");		
+
+      
 
 			// Present the user with a menu of 5 options
 
@@ -343,7 +388,7 @@ double twenty = 20;
 
 		} // end of wile loop
 
-		System.out.println("\nThank you for banking with us!\n");
+		System.out.println("\nThank you for banking with us! Good Bye!\n");
 
 	}
 
@@ -357,6 +402,20 @@ class Account {
 	String type;
 	double balance;
 	double rate;
+  int pin;
+  int accountNum;
+
+
+
+	void setPin(int p) {
+		
+		pin = p;
+	}
+
+  void setAccountNum(int a) {
+		
+		accountNum = a;
+	}
 
 	// The following methods are a combination of getter/setter methods as well
 	// as two special deposit() and withdraw() methods
